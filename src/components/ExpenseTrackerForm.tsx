@@ -8,7 +8,7 @@ const ExpenseTrackerForm: React.FC = () => {
           <div className="col-md-4 card-left-side">
             <div className="mb-3 mt-4">
               <label htmlFor="expenseName" className="form-label">
-                Email address
+                Expense Name
               </label>
               <input
                 type="text"
@@ -21,7 +21,10 @@ const ExpenseTrackerForm: React.FC = () => {
               <label htmlFor="expenseType" className="form-label">
                 Select Type
               </label>
-              <select id="expenseType" className="form-select form-select-lg ">
+              <select
+                id="expenseType"
+                className="form-control form-select form-select-lg "
+              >
                 <option defaultValue="selectedType">Select Type</option>
                 <option value="income">Income</option>
                 <option value="expense">Expense</option>
@@ -33,6 +36,7 @@ const ExpenseTrackerForm: React.FC = () => {
               </label>
               <input
                 type="number"
+                min="0"
                 className="form-control"
                 id="expenseAmount"
                 placeholder="Expense Amount"
@@ -45,9 +49,9 @@ const ExpenseTrackerForm: React.FC = () => {
             </div>
           </div>
 
-          <div className="col-md-8">
+          <div className="col-md-8 custom-card-body">
             <div className="card-body">
-              <h5 className="card-title">Card title</h5>
+              <h5 className="card-title text-center">Transaction History</h5>
               <p className="card-text">
                 This is a wider card with supporting text below as a natural
                 lead-in to additional content. This content is a little bit

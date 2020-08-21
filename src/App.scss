@@ -9,6 +9,10 @@
   border-radius: 5px;
 }
 
+.custom-card-body {
+  background: #F1EAF1;
+}
+
 .btn-purple {
   color: #fff;
   background-color: #8f659a;
@@ -17,4 +21,8 @@
 
 .btn-purple:hover {
   color: #fff;
+}
+
+.text-purple {
+  color: #8f659a;
 }
