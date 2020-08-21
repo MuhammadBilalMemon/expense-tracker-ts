@@ -6,11 +6,9 @@ import ExpenseTrackerForm from "./components/ExpenseTrackerForm";
 
 function App() {
   return (
-    <>
-      <Layout>
-        <ExpenseTrackerForm />
-      </Layout>
-    </>
+    <Layout>
+      <ExpenseTrackerForm />
+    </Layout>
   );
 }
 

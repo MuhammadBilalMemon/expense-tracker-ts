@@ -55,12 +55,12 @@ const Balance: React.FC = () => {
           </ul>
         </div>
         <h5 className="card-title text-center mt-3">Transaction History</h5>
-        <p className="card-text">
+        <div className="card-text">
           <TransactionList transactions={transactions} />
-        </p>
-        <p className="card-text text-center">
+        </div>
+        <div className="card-text text-center">
           <small className="text-muted ">Created by : Muhammad Bilal</small>
-        </p>
+        </div>
       </div>
     </div>
   );

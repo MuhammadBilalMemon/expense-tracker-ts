@@ -22,7 +22,11 @@ const slice = createSlice({
     transactionAdded: (state, action: PayloadAction<Transaction>) => {
       state.transactions.push(action.payload);
     },
-    transactionRemoved: (state, action: any) => {},
+    transactionRemoved: (state, action: PayloadAction<string>) => {
+      state.transactions = state.transactions.filter(
+        (trans) => trans.id !== action.payload
+      );
+    },
   },
 });
 
@@ -37,12 +41,9 @@ const store = configureStore({
   reducer: rootReducer,
 });
 
-export const { transactionAdded } = slice.actions;
+export const { transactionAdded, transactionRemoved } = slice.actions;
 export const reducer = slice.reducer;
 
 export type RootState = ReturnType<typeof rootReducer>;
-// export type AppDispatch = typeof store.dispatch;
-
-// export const useAppDispatch = () => useDispatch<AppDispatch>();
 
 export default store;

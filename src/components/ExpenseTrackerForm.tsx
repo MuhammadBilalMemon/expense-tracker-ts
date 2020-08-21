@@ -32,10 +32,10 @@ const ExpenseTrackerForm: React.FC = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit(handleTransaction)}>
-      <div className="card mb-3 custom-card-body">
-        <div className="row g-0">
-          <div className="col-md-4 card-left-side">
+    <div className="card mb-3 custom-card-body">
+      <div className="row g-0">
+        <div className="col-md-4 card-left-side">
+          <form onSubmit={handleSubmit(handleTransaction)}>
             <div className="mb-3 mt-4">
               <label htmlFor="expenseName" className="form-label">
                 Expense Name
@@ -92,11 +92,11 @@ const ExpenseTrackerForm: React.FC = () => {
                 Submit
               </button>
             </div>
-          </div>
-          <Balance />
+          </form>
         </div>
+        <Balance />
       </div>
-    </form>
+    </div>
   );
 };
 

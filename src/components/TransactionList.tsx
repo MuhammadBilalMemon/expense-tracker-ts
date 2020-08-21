@@ -1,12 +1,16 @@
 import React from "react";
 
 import { Transaction } from "../model/Transaction";
+import { transactionRemoved } from "../store";
+import { useDispatch } from "react-redux";
 
 interface Props {
   transactions: Transaction[];
 }
 
 const TransactionList: React.FC<Props> = ({ transactions }) => {
+  const dispatch = useDispatch();
+
   return (
     <div>
       {transactions.map((transaction) => (
@@ -25,7 +29,14 @@ const TransactionList: React.FC<Props> = ({ transactions }) => {
           <span className="d-flex flex-fill align-middle">
             ${transaction.amount}
           </span>
-          <button className="btn btn-outline-danger">Delete</button>
+          <button
+            className="btn btn-outline-danger"
+            onClick={() =>
+              dispatch(transactionRemoved(transaction.id.toString()))
+            }
+          >
+            Delete
+          </button>
         </div>
       ))}
     </div>
