@@ -1,9 +1,39 @@
 import React from "react";
+import { useForm } from "react-hook-form";
+import Balance from "./Balance";
+
+import { Transaction, TransactionType } from "../model/Transaction";
+import { transactionAdded } from "../store";
+
+import { useDispatch } from "react-redux";
+
+type Inputs = {
+  name: string;
+  amount: number;
+  transactionType: TransactionType;
+};
 
 const ExpenseTrackerForm: React.FC = () => {
+  const { register, handleSubmit, errors, reset } = useForm<Inputs>();
+
+  const dispatch = useDispatch();
+
+  const handleTransaction = (data: Inputs) => {
+    const amount =
+      data.transactionType === "income" ? +data.amount : -data.amount;
+    const transaction: Transaction = {
+      id: Math.floor(Math.random() * 10000000).toString(),
+      name: data.name,
+      amount,
+      transactionType: data.transactionType,
+    };
+    dispatch(transactionAdded(transaction));
+    reset();
+  };
+
   return (
-    <>
-      <div className="card mb-3">
+    <form onSubmit={handleSubmit(handleTransaction)}>
+      <div className="card mb-3 custom-card-body">
         <div className="row g-0">
           <div className="col-md-4 card-left-side">
             <div className="mb-3 mt-4">
@@ -11,19 +41,27 @@ const ExpenseTrackerForm: React.FC = () => {
                 Expense Name
               </label>
               <input
+                name="name"
                 type="text"
                 className="form-control"
                 id="expenseName"
                 placeholder="Expense Name"
+                ref={register({ required: true })}
               />
+              {errors.name && (
+                <small className="text-white">Expense name is required</small>
+              )}
             </div>
+
             <div className="mb-3">
               <label htmlFor="expenseType" className="form-label">
                 Select Type
               </label>
               <select
+                name="transactionType"
                 id="expenseType"
-                className="form-control form-select form-select-lg "
+                className="form-control form-select form-select-lg"
+                ref={register({ required: true, min: 1 })}
               >
                 <option defaultValue="selectedType">Select Type</option>
                 <option value="income">Income</option>
@@ -35,12 +73,19 @@ const ExpenseTrackerForm: React.FC = () => {
                 Expense Amount
               </label>
               <input
+                name="amount"
                 type="number"
                 min="0"
                 className="form-control"
                 id="expenseAmount"
                 placeholder="Expense Amount"
+                ref={register({ required: true })}
               />
+              {errors.name && (
+                <small className="text-white">
+                  Amount must be grater than 0.
+                </small>
+              )}
             </div>
             <div className="mb-3">
               <button type="submit" className="btn btn-purple">
@@ -48,23 +93,10 @@ const ExpenseTrackerForm: React.FC = () => {
               </button>
             </div>
           </div>
-
-          <div className="col-md-8 custom-card-body">
-            <div className="card-body">
-              <h5 className="card-title text-center">Transaction History</h5>
-              <p className="card-text">
-                This is a wider card with supporting text below as a natural
-                lead-in to additional content. This content is a little bit
-                longer.
-              </p>
-              <p className="card-text">
-                <small className="text-muted">Last updated 3 mins ago</small>
-              </p>
-            </div>
-          </div>
+          <Balance />
         </div>
       </div>
-    </>
+    </form>
   );
 };
 
