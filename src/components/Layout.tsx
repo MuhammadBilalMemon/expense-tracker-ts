@@ -9,7 +9,7 @@ const Layout: React.FC = ({ children }) => {
           <span className="text-success ">Muhammad Bilal</span>
         </h1>
       </header>
-      <div className="body-section text-center">{children}</div>
+      <div className="body-section pt-5">{children}</div>
     </div>
   );
 };

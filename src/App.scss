@@ -1,23 +1,20 @@
 // Override default variables before the import
-// $body-bg: #000;
+
 // Import Bootstrap and its default variables
 @import "~bootstrap/scss/bootstrap.scss";
 
-// // Source mixin
-// @mixin make-container() {
-//   width: 100%;
-//   margin-right: auto;
-//   margin-left: auto;
-// }
+.card-left-side {
+  background-color: #684e6e;
+  color: #fff;
+  border-radius: 5px;
+}
 
-// $body-color: #684e6e;
+.btn-purple {
+  color: #fff;
+  background-color: #8f659a;
+  border-color: #8f659a;
+}
 
-// Usage
-// .custom-container {
-//   @include make-container();
-// }
-// .body-section {
-//   background-color: $body-color;
-//   padding: 10px;
-//   color: #fff;
-// }
+.btn-purple:hover {
+  color: #fff;
+}
