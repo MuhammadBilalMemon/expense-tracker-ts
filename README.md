@@ -1,3 +1,7 @@
+### Expsene Tracker App 
+
+Open [Expense Tracker App](https://expense-tracker-2020-react.netlify.app/) to view it in the browser.
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
